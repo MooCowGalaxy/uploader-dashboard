@@ -81,7 +81,7 @@ function Home() {
             const data = res.data
             setGlobalStats(data)
         })
-    })
+    }, [])
     useEffect(() => {
         sendReq(baseUrl + '/api/stats/history').then(res => {
             const data = res.data
@@ -118,7 +118,7 @@ function Home() {
                 }]
             })
         })
-    })
+    }, [])
 
     return (
         <div>
