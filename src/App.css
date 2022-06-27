@@ -413,7 +413,7 @@ code {
   transform: translateY(-20vh);
   transition: transform ease-in-out 300ms;
 }
-#modal.visible > div > #modal-container {
+#modal.visible > #modal-container {
   transform: translateY(0);
 }
 

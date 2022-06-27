@@ -3,6 +3,7 @@ import {useRef, useState} from "react";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import sendReq from "../services/sendReq";
 import cloneDeep from 'lodash/cloneDeep';
+import toast from "react-hot-toast";
 
 function User({modalData, setModalData}) {
     const auth = useAuth()
@@ -11,7 +12,7 @@ function User({modalData, setModalData}) {
     const [linkTypeChanged, setLinkTypeChanged] = useState(false)
     const [linkType, setLinkType] = useState(auth.user.settings.linkType.toString())
     const [linkTypeState, setLinkTypeState] = useState(0)
-    // 0: N/A - 1: saving - 2: saved
+    // 0: N/A - 1: saving
     const apiKey = useRef(null)
     const copyApiKey = useRef(null)
 
@@ -74,7 +75,7 @@ function User({modalData, setModalData}) {
             title: 'Are you sure?',
             description: 'If you regenerate your API key, you will need to re-download your configs. Only proceed if you know what you are doing.',
             iconColor: 'bg-red-100',
-            iconSVG: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-600" fill="none"
+            iconSVG: <svg key="modalSVG" xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-600" fill="none"
                           viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round"
                       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
@@ -110,12 +111,14 @@ function User({modalData, setModalData}) {
         setLinkTypeState(1)
         sendReq('/api/user/link', {method: 'POST', data: {type: val}})
             .then(() => {
-                setLinkTypeState(2)
+                setLinkTypeState(0)
                 setLinkTypeChanged(false)
                 auth.reloadData().then()
-                setTimeout(() => {
-                    setLinkTypeState(0)
-                }, 1500)
+                toast.success((
+                    <p>
+                        <b>Saved link type!</b>
+                    </p>
+                ))
             })
             .catch(() => {
                 setLinkTypeState(0)

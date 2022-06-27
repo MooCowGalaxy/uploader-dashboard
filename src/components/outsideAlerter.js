@@ -11,17 +11,17 @@ function useOutsideAlerter(ref, onOutsideClick) {
             }
         }
         // Bind the event listener
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("click", handleClickOutside, true);
         return () => {
             // Unbind the event listener on clean up
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("click", handleClickOutside, true);
         };
     }, [onOutsideClick, ref]);
 }
 
-export default function OutsideAlerter({children, onOutsideClick, id, className}) {
+export default function OutsideAlerter({children, onOutsideClick, className}) {
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, onOutsideClick);
 
-    return <div key={id} className={className} ref={wrapperRef}>{children}</div>;
+    return <div className={className} ref={wrapperRef}>{children}</div>;
 }

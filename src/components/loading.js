@@ -1,6 +1,6 @@
 function Loading() {
     return (
-        <div className="flex d-flex-col w-screen h-screen">
+        <div className="d-flex-col flex-1-1 w-full h-full">
             <div className="flex-auto"/>
             <div className="flex-initial">
                 <div className="mx-auto w-fit">

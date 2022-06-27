@@ -7,7 +7,7 @@ async function sendReq(url, {method = 'GET', data = {}} = {}) {
         credentials: 'include',
         headers: {}
     }
-    if (method === 'POST') {
+    if (method === 'POST' && Object.keys(data).length > 0) {
         settings.body = JSON.stringify(data)
         settings.headers['Content-Type'] = 'application/json'
     }
@@ -24,20 +24,16 @@ async function sendReq(url, {method = 'GET', data = {}} = {}) {
     if (error) {
         if (result.status === 429) {
             toast.error((
-                <>
-                    <p>
-                        <b>Request failed: </b>You are currently being ratelimited.
-                    </p>
-                </>
+                <p>
+                    <b>Request failed: </b>You are currently being ratelimited.
+                </p>
             ))
             // createToast({type: 'error', title: 'Request failed', content: 'You are currently being ratelimited.'})
         } else {
             toast.error((
-                <>
-                    <p>
-                        <b>Request failed: </b>{json.error}
-                    </p>
-                </>
+                <p>
+                    <b>Request failed: </b>{json.error}
+                </p>
             ))
             // createToast({type: 'error', title: 'Request failed', content: json.error})
             console.error(json.error)
