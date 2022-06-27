@@ -15,7 +15,8 @@ const titleMapping = {
     '/embed': 'Embed Settings',
     '/gallery': 'Image Gallery',
     '/domains': 'Domains',
-    '/premium': 'Donate'
+    '/donate': 'Donate',
+    '/rules': 'Rules'
 }
 
 function Container({modalData, setModalData}) {
