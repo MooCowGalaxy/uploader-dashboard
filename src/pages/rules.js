@@ -3,7 +3,8 @@ function Rules() {
         <div>
             <div className="content">
                 <h1>Rules</h1>
-                <p className="mb-2">By using Uploader, you agree to abiding by the rules listed below. These rules are not
+                <p className="mb-2">By using Uploader, you agree to abiding by the rules listed below. These rules are
+                    not
                     exhaustive, and actions are ultimately up to staff discretion.</p>
                 <ol className="list-decimal ml-10 mb-2">
                     <li>Do not upload NSFW content or gore to the service.</li>

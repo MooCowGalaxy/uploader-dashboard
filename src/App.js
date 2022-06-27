@@ -5,7 +5,7 @@ import {AuthProvider} from "./services/auth";
 import Navbar from "./components/navbar";
 import Container from "./components/container";
 import {useEffect, useRef, useState} from "react";
-import { Toaster } from 'react-hot-toast'
+import {Toaster} from 'react-hot-toast'
 
 function App() {
     const [modalData, setModalData] = useState({});
@@ -27,15 +27,17 @@ function App() {
 
     return (
         <>
-            <Headers />
+            <Headers/>
             <BrowserRouter>
                 <AuthProvider>
-                    <Navbar />
-                    <Container modalData={modalData} setModalData={setModalData} />
+                    <Navbar/>
+                    <Container modalData={modalData} setModalData={setModalData}/>
                 </AuthProvider>
             </BrowserRouter>
-            <div id="modal" ref={modal} className={`d-flex-col justify-between fixed top-0 left-0 w-screen h-screen ${modalData.visible ? 'visible' : ''}`} style={{'zIndex': -100}}>
-                <div />
+            <div id="modal" ref={modal}
+                 className={`d-flex-col justify-between fixed top-0 left-0 w-screen h-screen ${modalData.visible ? 'visible' : ''}`}
+                 style={{'zIndex': -100}}>
+                <div/>
                 <div id="modal-container" className="px-3">
                     <div className="container max-w-2xl mx-auto shadow-lg">
                         <div className="bg-white px-5 pt-4 pb-3 rounded-tl-lg rounded-tr-lg d-flex-row">
@@ -50,16 +52,16 @@ function App() {
                             </div>
                         </div>
                         <div className="bg-neutral-200 px-5 py-3 rounded-bl-lg rounded-br-lg flex justify-between">
-                            <div />
+                            <div/>
                             <div className="d-flex-row grid gap-3">
                                 {modalData.buttons}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div />
+                <div/>
             </div>
-            <Toaster position="top-right" reverseOrder={false} />
+            <Toaster position="top-right" reverseOrder={false}/>
         </>
     );
 }

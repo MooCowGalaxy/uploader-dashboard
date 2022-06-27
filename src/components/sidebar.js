@@ -8,25 +8,29 @@ function Sidebar({sidebarOpen, setSidebarOpen}) {
     const isActive = (p) => {
         return p === path ? 'active' : '';
     }
-    
+
     const closeSidebarSmall = () => {
         if (window.innerWidth <= 640) setSidebarOpen(false)
     }
 
     return (
         <>
-            <div className={`bg-blue-sidebar p-5 w-screen sm:w-60 flex-initial z-10 sm:absolute d-flex-col justify-between ${sidebarOpen ? '' : 'closed'}`} id="sidebar">
+            <div
+                className={`bg-blue-sidebar p-5 w-screen sm:w-60 flex-initial z-10 sm:absolute d-flex-col justify-between ${sidebarOpen ? '' : 'closed'}`}
+                id="sidebar">
                 <div>
                     <div className="flex justify-between">
                         <h1 className="text-lg font-bold">Dashboard</h1>
-                        <button onClick={() => {setSidebarOpen(false)}}>
+                        <button onClick={() => {
+                            setSidebarOpen(false)
+                        }}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:hidden" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                             </svg>
                         </button>
                     </div>
-                    <hr className="my-2 border-slate-400" />
+                    <hr className="my-2 border-slate-400"/>
                     <Link to="/dashboard">
                         <div className={`sidebar-item ${isActive('')}`} onClick={closeSidebarSmall}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -77,17 +81,17 @@ function Sidebar({sidebarOpen, setSidebarOpen}) {
                             <p>&nbsp;Domains</p>
                         </div>
                     </Link>
-                    <Link to="/dashboard/premium">
+                    <Link to="/dashboard/donate">
                         <div className={`sidebar-item ${isActive('/premium')}`} onClick={closeSidebarSmall}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round"
                                       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
                             </svg>
-                            <p>&nbsp;Premium</p>
+                            <p>&nbsp;Donate</p>
                         </div>
                     </Link>
-                    <hr className="my-2 border-slate-400" />
+                    <hr className="my-2 border-slate-400"/>
                     <Link to="/dashboard/rules">
                         <div className={`sidebar-item ${isActive('/rules')}`} onClick={closeSidebarSmall}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -112,7 +116,7 @@ function Sidebar({sidebarOpen, setSidebarOpen}) {
                     <p>© 2022 uploader.tech</p>
                 </div>
             </div>
-            <div id="sidebar-placeholder" className={`hidden sm:inline-block ${sidebarOpen ? '' : 'closed'}`} />
+            <div id="sidebar-placeholder" className={`hidden sm:inline-block ${sidebarOpen ? '' : 'closed'}`}/>
         </>
     );
 }

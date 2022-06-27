@@ -46,6 +46,7 @@ function Embed() {
         if (embedEnabled && siteTitle === '') return 'There must be a title for the embed to display.'
         return null
     }
+
     function setPlaceholders(text) {
         let newText = text.replaceAll('[date]', new Date().toUTCString().split(' ').slice(0, 4).join(' '))
         newText = newText.replaceAll('[datetime]', new Date().toUTCString())
@@ -54,6 +55,7 @@ function Embed() {
         newText = newText.replaceAll('[dimensions]', '256 x 256')
         return newText
     }
+
     function embedHasChanges() {
         if (original.embedEnabled !== embedEnabled) return true
         if (original.embedSiteName !== siteName) return true
@@ -61,6 +63,7 @@ function Embed() {
         if (original.embedSiteDescription !== siteDescription) return true
         return original.embedColor !== embedColor;
     }
+
     const onSaveClick = () => {
         if (getError()) return;
         if (!embedHasChanges()) return;
@@ -101,9 +104,10 @@ function Embed() {
                     <div className="form-check form-switch">
                         <input
                             className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
-                            type="checkbox" role="switch" checked={embedEnabled} onChange={e => setEmbedEnabled(e.target.checked)} />
-                            <label className="form-check-label inline-block text-gray-800"
-                                   htmlFor="page-embed-embed-toggle">Enable embeds</label>
+                            type="checkbox" role="switch" checked={embedEnabled}
+                            onChange={e => setEmbedEnabled(e.target.checked)}/>
+                        <label className="form-check-label inline-block text-gray-800"
+                               htmlFor="page-embed-embed-toggle">Enable embeds</label>
                     </div>
                 </div>
                 <div className="accordion mb-4" id="placeholder-accordion">
@@ -119,11 +123,11 @@ function Embed() {
                         <div id="placeholder-accordion-content" className="accordion-collapse collapse show"
                              aria-labelledby="placeholder-accordion-heading" data-bs-parent="#placeholder-accordion">
                             <div className="accordion-body py-4 px-5">
-                                <code>[date]</code> - Displays the UTC date when the image was uploaded.<br />
+                                <code>[date]</code> - Displays the UTC date when the image was uploaded.<br/>
                                 <code>[datetime]</code> - Displays the UTC date and time when the image was
-                                uploaded.<br />
-                                <code>[filesize]</code> - Displays a human-readable format of the image size.<br />
-                                <code>[name]</code> - Displays the name of the image.<br />
+                                uploaded.<br/>
+                                <code>[filesize]</code> - Displays a human-readable format of the image size.<br/>
+                                <code>[name]</code> - Displays the name of the image.<br/>
                                 <code>[dimensions]</code> - Displays the dimensions of the image.
                             </div>
                         </div>
@@ -187,7 +191,9 @@ function Embed() {
                 <h1 className="mb-2">Embed Preview</h1>
                 <div className="discord-embed-container p-5 inline-flex w-full">
                     <div className="discord-embed-profile pr-3 flex-initial">
-                        <img className="rounded-full w-12 h-12" src={auth.data.avatar ? `https://cdn.discordapp.com/avatars/${auth.data.id}/${auth.data.avatar}.png?size=64` : ''} alt="" />
+                        <img className="rounded-full w-12 h-12"
+                             src={auth.data.avatar ? `https://cdn.discordapp.com/avatars/${auth.data.id}/${auth.data.avatar}.png?size=64` : ''}
+                             alt=""/>
                     </div>
                     <div className="discord-embed-content flex-1 max-w-full">
                         <div className="discord-embed-username select-none">
@@ -206,15 +212,17 @@ function Embed() {
                                 <span className="discord-embed-site-title">{setPlaceholders(siteTitle)}</span>
                             </div>
                             <div>
-                                <span className="discord-embed-site-description">{setPlaceholders(siteDescription)}</span>
+                                <span
+                                    className="discord-embed-site-description">{setPlaceholders(siteDescription)}</span>
                             </div>
                             <div>
                                 <img src="https://uploader.tech/static/img/SXL.png" alt=""
-                                     className="max-h-28 sm:max-h-36 md:max-h-48 xl:max-h-64 object-contain w-auto max-w-full" />
+                                     className="max-h-28 sm:max-h-36 md:max-h-48 xl:max-h-64 object-contain w-auto max-w-full"/>
                             </div>
                         </div>
                         <div className={`max-w-3xl ${embedEnabled ? 'hidden' : ''}`}>
-                            <img src="https://uploader.tech/static/img/SXL.png" alt="" className="max-h-28 sm:max-h-36 md:max-h-48 xl:max-h-64 object-contain w-auto max-w-full" />
+                            <img src="https://uploader.tech/static/img/SXL.png" alt=""
+                                 className="max-h-28 sm:max-h-36 md:max-h-48 xl:max-h-64 object-contain w-auto max-w-full"/>
                         </div>
                     </div>
                 </div>

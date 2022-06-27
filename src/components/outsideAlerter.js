@@ -10,6 +10,7 @@ function useOutsideAlerter(ref, onOutsideClick) {
                 onOutsideClick();
             }
         }
+
         // Bind the event listener
         document.addEventListener("click", handleClickOutside, true);
         return () => {

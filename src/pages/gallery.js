@@ -47,7 +47,7 @@ function Gallery() {
     const imageContent = []
     for (let image of images) {
         imageContent.push((
-            <Image key={`i-${image.fileId}`} image={image} domain={auth.user.domain} del={deleteImage} />
+            <Image key={`i-${image.fileId}`} image={image} domain={auth.user.domain} del={deleteImage}/>
         ))
     }
 
@@ -56,7 +56,8 @@ function Gallery() {
             <div className="content d-flex-row">
                 <div className="mb-3 xl:w-96">
                     <label htmlFor="sort">Sort by:</label>
-                    <select id="sort" onChange={onSort} value={sort} className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                    <select id="sort" onChange={onSort} value={sort}
+                            className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                         <option value="0">Date (new to old)</option>
                         <option value="1">Date (old to new)</option>
                         <option value="2">File name (A-Z)</option>
@@ -69,7 +70,8 @@ function Gallery() {
             <div key="gallery" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {imageContent.length > 0 ? imageContent : (loading ? '' : 'No images.')}
             </div>
-            <button className={`bg-gray-200 px-4 py-2 rounded-md disabled:opacity-75 ${isLastPage ? 'hidden' : ''}`} onClick={onLoadMore} disabled={loading}>{loading ? 'Loading...' : 'Load More'}</button>
+            <button className={`bg-gray-200 px-4 py-2 rounded-md disabled:opacity-75 ${isLastPage ? 'hidden' : ''}`}
+                    onClick={onLoadMore} disabled={loading}>{loading ? 'Loading...' : 'Load More'}</button>
         </div>
     )
 }

@@ -16,8 +16,11 @@ function User({modalData, setModalData}) {
     const apiKey = useRef(null)
     const copyApiKey = useRef(null)
 
-    const path = apiKeyViewable ? <><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></>
+    const path = apiKeyViewable ? <>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path strokeLinecap="round" strokeLinejoin="round"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </>
         : <path strokeLinecap="round" strokeLinejoin="round"
                 d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
 
@@ -61,14 +64,14 @@ function User({modalData, setModalData}) {
                         }, 500)
                     }, 1500)
                 }).catch(() => {
-                    let data = cloneDeep(baseData)
-                    data.closable = true
-                    data.visible = false
-                    setModalData(data)
-                    setTimeout(() => {
-                        setModalData({})
-                    }, 500)
-                })
+                let data = cloneDeep(baseData)
+                data.closable = true
+                data.visible = false
+                setModalData(data)
+                setTimeout(() => {
+                    setModalData({})
+                }, 500)
+            })
         }
 
         const baseData = {
@@ -134,7 +137,8 @@ function User({modalData, setModalData}) {
                         <p ref={apiKey}>{apiKeyViewable ? auth.user.apiKey : '*********************'}</p>
                         <div className="absolute right-4 top-2.5">
                             <CopyToClipboard text={auth.user.apiKey} onCopy={onApiKeyCopy}>
-                                <button disabled={apiKeyCopied} className={`mr-1 ${apiKeyCopied ? 'text-green-500' : ''}`} ref={copyApiKey}>
+                                <button disabled={apiKeyCopied}
+                                        className={`mr-1 ${apiKeyCopied ? 'text-green-500' : ''}`} ref={copyApiKey}>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -142,7 +146,9 @@ function User({modalData, setModalData}) {
                                     </svg>
                                 </button>
                             </CopyToClipboard>
-                            <button onClick={() => {setApiKeyViewable(!apiKeyViewable)}}>
+                            <button onClick={() => {
+                                setApiKeyViewable(!apiKeyViewable)
+                            }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     {path}
@@ -151,7 +157,8 @@ function User({modalData, setModalData}) {
                         </div>
                     </div>
                     <div>
-                        <button onClick={regenerateKey} className="px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md float-right">
+                        <button onClick={regenerateKey}
+                                className="px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md float-right">
                             Regenerate
                         </button>
                     </div>
@@ -164,18 +171,21 @@ function User({modalData, setModalData}) {
                 <div className="content">
                     <h1 className="mb-2">Link Type</h1>
                     <label htmlFor="page-user-link-type">Set link type</label>
-                    <select id="select" onChange={onChange} value={linkType} className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                    <select id="select" onChange={onChange} value={linkType}
+                            className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                         <option value="0" id="0" className="type">Random alphanumeric</option>
                         <option value="1" id="1" className="type">Random emojis</option>
                         <option value="2" id="2" className="type">Zero width characters</option>
                     </select>
-                    <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0} className="px-4 py-2 bg-green-300 rounded-md disabled:opacity-75 disabled:bg-gray-300">{linkTypeState === 1 ? <>
+                    <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0}
+                            className="px-4 py-2 bg-green-300 rounded-md disabled:opacity-75 disabled:bg-gray-300">{linkTypeState === 1 ? <>
                         <div
                             className="spinner-border animate-spin inline-block w-4 h-4 border rounded-full text-gray-800"
                             role="status">
                             <span className="visually-hidden">Saving...</span>
                         </div>
-                        <span className="text-gray-800"> Saving...</span></> : (linkTypeState === 2 ? 'Saved!' : 'Save')}</button>
+                        <span
+                            className="text-gray-800"> Saving...</span></> : (linkTypeState === 2 ? 'Saved!' : 'Save')}</button>
                 </div>
             </div>
         </div>

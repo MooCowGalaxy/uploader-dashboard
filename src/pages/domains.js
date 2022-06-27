@@ -52,7 +52,7 @@ function Domains() {
                 <div className="max-w-3xl">
                     <input type="text"
                            className="form-control inline-block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-l transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                           placeholder="Subdomain" value={newDomain} onChange={onDomainInput} maxLength="20" />
+                           placeholder="Subdomain" value={newDomain} onChange={onDomainInput} maxLength="20"/>
                     <span
                         className="inline-block px-3 py-1.5 -translate-x-0.5 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border border-solid border-gray-300 rounded-r">.is-trolli.ng</span>
                 </div>

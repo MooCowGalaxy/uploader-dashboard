@@ -3,16 +3,16 @@ import {useEffect, useState} from "react";
 import sendReq from "../services/sendReq";
 import baseUrl from "../vars";
 import {
-    Chart as ChartJS,
     CategoryScale,
+    Chart as ChartJS,
+    Legend,
     LinearScale,
-    PointElement,
     LineElement,
+    PointElement,
     Title,
     Tooltip,
-    Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 
 ChartJS.register(
     CategoryScale,
@@ -147,18 +147,21 @@ function Home() {
                         <div className="rounded-md bg-lime-200 bg-opacity-50 py-2 px-3 border-l-4 border-l-lime-400"
                              id="page-home-global-images">
                             {globalStats !== {} ?
-                                <p><b className="font-semibold text-lime-600">{globalStats.fileCount}</b> images uploaded</p> : <p className="text-loading" />}
+                                <p><b className="font-semibold text-lime-600">{globalStats.fileCount}</b> images
+                                    uploaded</p> : <p className="text-loading"/>}
                         </div>
                         <div className="rounded-md bg-cyan-100 bg-opacity-50 py-2 px-3 border-l-4 border-l-cyan-300"
                              id="page-home-global-storage">
                             {globalStats !== {} ?
-                                <p><b className="font-semibold text-cyan-600">{globalStats.dataUsed}</b> storage used</p> : <p className="text-loading"/>}
+                                <p><b className="font-semibold text-cyan-600">{globalStats.dataUsed}</b> storage used
+                                </p> : <p className="text-loading"/>}
                         </div>
                         <div
                             className="rounded-md bg-blue-100 md:col-span-2 xl:col-span-1 bg-opacity-50 py-2 px-3 border-l-4 border-l-blue-400"
                             id="page-home-global-users">
                             {globalStats !== {} ?
-                                <p><b className="font-semibold text-blue-600">{globalStats.userCount}</b> users registered</p> : <p className="text-loading"/>}
+                                <p><b className="font-semibold text-blue-600">{globalStats.userCount}</b> users
+                                    registered</p> : <p className="text-loading"/>}
                         </div>
                     </div>
                 </div>
@@ -209,7 +212,9 @@ function Home() {
                 <div className="content d-flex-col">
                     <h1 className="flex-initial">Statistics</h1>
                     <div className="max-h-full flex-1">
-                        {statData !== null ? <Line className="w-full h-full" data={statData} options={chartOptions} type="line" /> : <div className="w-full h-full div-loading" />}
+                        {statData !== null ?
+                            <Line className="w-full h-full" data={statData} options={chartOptions} type="line"/> :
+                            <div className="w-full h-full div-loading"/>}
                     </div>
                 </div>
             </div>
