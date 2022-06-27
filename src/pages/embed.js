@@ -192,7 +192,7 @@ function Embed() {
                 <div className="discord-embed-container p-5 inline-flex w-full">
                     <div className="discord-embed-profile pr-3 flex-initial">
                         <img className="rounded-full w-12 h-12"
-                             src={auth.data.avatar ? `https://cdn.discordapp.com/avatars/${auth.data.id}/${auth.data.avatar}.png?size=64` : ''}
+                             src={auth.data.avatar ? `https://cdn.discordapp.com/avatars/${auth.data.id}/${auth.data.avatar}.png?size=64` : 'https://discord.com/assets/c09a43a372ba81e3018c3151d4ed4773.png'}
                              alt=""/>
                     </div>
                     <div className="discord-embed-content flex-1 max-w-full">

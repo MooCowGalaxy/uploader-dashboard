@@ -128,64 +128,99 @@ function User({modalData, setModalData}) {
             })
     }
 
+    const percentageStorage = auth.user.bytesUsed / (auth.user.storageQuota * 1000 * 1000 * 1000)
+    const color = percentageStorage >= 0.9 ? 'text-red-500' :
+        (percentageStorage >= 0.7 ? 'text-yellow-600' : 'text-green-500')
+
+    const roundedPercentage = Math.round(percentageStorage * 10000) / 100
+
     return (
         <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="content">
-                    <h1 className="mb-2">API Key</h1>
-                    <div className="rounded border border-gray-300 px-4 py-2.5 mb-2 relative">
-                        <p ref={apiKey}>{apiKeyViewable ? auth.user.apiKey : '*********************'}</p>
-                        <div className="absolute right-4 top-2.5">
-                            <CopyToClipboard text={auth.user.apiKey} onCopy={onApiKeyCopy}>
-                                <button disabled={apiKeyCopied}
-                                        className={`mr-1 ${apiKeyCopied ? 'text-green-500' : ''}`} ref={copyApiKey}>
+                <div>
+                    <div className="content">
+                        <h1 className="mb-2">Profile</h1>
+                        <div className="d-flex-row mb-5">
+                            <div className="flex-initial">
+                                <img className="rounded-full w-12 h-12 mr-3"
+                                     src={auth.data.avatar ? `https://cdn.discordapp.com/avatars/${auth.data.id}/${auth.data.avatar}.png?size=64` : 'https://discord.com/assets/c09a43a372ba81e3018c3151d4ed4773.png'}
+                                     alt=""/>
+                            </div>
+                            <div className="flex-1-1 my-auto">
+                                <p className="text-xl text-gray-500"><b className="text-black">{auth.data.username}</b>#{auth.data.discriminator}</p>
+                            </div>
+                        </div>
+                        <div className="mb-3">
+                            <p className="text-lg">Storage: <b className="font-semibold">{auth.user.bytesHuman}</b> / <b className="font-semibold">{auth.user.storageQuota} GB</b> (<b className={`font-semibold ${color}`}>{roundedPercentage}%</b>)</p>
+                            <div className="w-full bg-gray-300 h-0.5">
+                                <div className="bg-blue-600 h-0.5" style={{width: `${roundedPercentage}%`}} />
+                            </div>
+                        </div>
+                        <div className="mb-3">
+                            <p className="text-lg">Upload limit: {auth.user.uploadLimit} MB</p>
+                        </div>
+                        <div>
+                            <p className="text-lg">Role: <b className="font-semibold">{auth.user.type[0]}{auth.user.type.slice(1).toLowerCase()}</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div className="content">
+                        <h1 className="mb-2">API Key</h1>
+                        <div className="rounded border border-gray-300 px-4 py-2.5 mb-2 relative">
+                            <p ref={apiKey}>{apiKeyViewable ? auth.user.apiKey : '*********************'}</p>
+                            <div className="absolute right-4 top-2.5">
+                                <CopyToClipboard text={auth.user.apiKey} onCopy={onApiKeyCopy}>
+                                    <button disabled={apiKeyCopied}
+                                            className={`mr-1 ${apiKeyCopied ? 'text-green-500' : ''}`} ref={copyApiKey}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                            <path strokeLinecap="round" strokeLinejoin="round"
+                                                  d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                                        </svg>
+                                    </button>
+                                </CopyToClipboard>
+                                <button onClick={() => {
+                                    setApiKeyViewable(!apiKeyViewable)
+                                }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                        <path strokeLinecap="round" strokeLinejoin="round"
-                                              d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                                        {path}
                                     </svg>
                                 </button>
-                            </CopyToClipboard>
-                            <button onClick={() => {
-                                setApiKeyViewable(!apiKeyViewable)
-                            }}>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                     viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                    {path}
-                                </svg>
+                            </div>
+                        </div>
+                        <div className="mb-10">
+                            <button onClick={regenerateKey}
+                                    className="inline-block px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md float-right">
+                                Regenerate
                             </button>
                         </div>
                     </div>
-                    <div>
-                        <button onClick={regenerateKey}
-                                className="px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md float-right">
-                            Regenerate
-                        </button>
+                    <div className="content">
+                        <h1 className="mb-2">ShareX Config</h1>
+                        <a className="inline-block px-4 py-2 bg-sky-500 text-white rounded-md" href="/api/config/sharex" target="_blank"
+                           rel="noopener noreferrer">Download</a>
                     </div>
-                </div>
-                <div className="content">
-                    <h1 className="mb-2">ShareX Config</h1>
-                    <a className="px-4 py-2 bg-sky-500 text-white rounded-md" href="/api/config/sharex" target="_blank"
-                       rel="noopener noreferrer">Download</a>
-                </div>
-                <div className="content">
-                    <h1 className="mb-2">Link Type</h1>
-                    <label htmlFor="page-user-link-type">Set link type</label>
-                    <select id="select" onChange={onChange} value={linkType}
-                            className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                        <option value="0" id="0" className="type">Random alphanumeric</option>
-                        <option value="1" id="1" className="type">Random emojis</option>
-                        <option value="2" id="2" className="type">Zero width characters</option>
-                    </select>
-                    <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0}
-                            className="px-4 py-2 bg-green-300 rounded-md disabled:opacity-75 disabled:bg-gray-300">{linkTypeState === 1 ? <>
-                        <div
-                            className="spinner-border animate-spin inline-block w-4 h-4 border rounded-full text-gray-800"
-                            role="status">
-                            <span className="visually-hidden">Saving...</span>
-                        </div>
-                        <span
-                            className="text-gray-800"> Saving...</span></> : (linkTypeState === 2 ? 'Saved!' : 'Save')}</button>
+                    <div className="content">
+                        <h1 className="mb-2">Link Type</h1>
+                        <label htmlFor="page-user-link-type">Set link type</label>
+                        <select id="select" onChange={onChange} value={linkType}
+                                className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <option value="0" id="0" className="type">Random alphanumeric</option>
+                            <option value="1" id="1" className="type">Random emojis</option>
+                            <option value="2" id="2" className="type">Zero width characters</option>
+                        </select>
+                        <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0}
+                                className="px-4 py-2 bg-green-300 rounded-md disabled:opacity-75 disabled:bg-gray-300">{linkTypeState === 1 ? <>
+                            <div
+                                className="spinner-border animate-spin inline-block w-4 h-4 border rounded-full text-gray-800"
+                                role="status">
+                                <span className="visually-hidden">Saving...</span>
+                            </div>
+                            <span
+                                className="text-gray-800"> Saving...</span></> : (linkTypeState === 2 ? 'Saved!' : 'Save')}</button>
+                    </div>
                 </div>
             </div>
         </div>
