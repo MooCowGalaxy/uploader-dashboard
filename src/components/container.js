@@ -1,4 +1,4 @@
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Sidebar from "./sidebar";
 import Home from "../pages/home";
 import User from "../pages/user";
@@ -54,6 +54,7 @@ function Container({modalData, setModalData}) {
                             <Route path='/dashboard/domains' element={<Domains/>}/>
                             <Route path='/dashboard/donate' element={<Donate/>}/>
                             <Route path='/dashboard/rules' element={<Rules/>}/>
+                            <Route path='/*' element={<Navigate to="/dashboard"/>}/>
                         </Routes>
                     </div>
                 </div>
