@@ -16,6 +16,7 @@ function Donate() {
                         <li>- For monthly donors: increased storage and upload limits</li>
                     </ul>
                     <p className="mb-2">All donations are greatly appreciated!</p>
+                    <a href="https://ko-fi.com/moocow" className="underline text-blue-500">Direct link to Ko-Fi</a>
                 </div>
                 <div className="content">
                     <iframe src='https://ko-fi.com/moocow/?hidefeed=true&widget=true&embed=true&preview=true' style={{border: 'none', width: '100%', padding: '4px', background: 'inherit'}} height='712' title='moocow'/>
