@@ -11,5 +11,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="um" level="application" />
     <orderEntry type="library" name="Widget_2" level="application" />
+    <orderEntry type="library" name="Widget_2" level="application" />
+    <orderEntry type="library" name="um" level="application" />
   </component>
 </module>

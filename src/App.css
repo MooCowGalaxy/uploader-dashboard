@@ -31,6 +31,9 @@
   -o-transition: none !important;
   transition: none !important;
 }
+.no-transition:hover {
+  transform: none !important;
+}
 .content {
   padding: 0.75rem 1.25rem;
   background-color: rgb(241, 245, 249);
@@ -401,19 +404,19 @@ code {
 .bg-blue-sidebar {
   background-color: #f6f8fa;
 }
-#modal {
+.custom-modal {
   opacity: 0;
   transition: opacity 300ms ease-in-out, background-color 300ms ease-in-out;
   background-color: rgba(31, 41, 55, 0.5);
 }
-#modal.visible {
+.custom-modal.visible {
   opacity: 1;
 }
-#modal-container {
+.modal-container {
   transform: translateY(-20vh);
   transition: transform ease-in-out 300ms;
 }
-#modal.visible > #modal-container {
+.custom-modal.visible > .modal-container {
   transform: translateY(0);
 }
 

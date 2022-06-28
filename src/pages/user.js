@@ -2,10 +2,9 @@ import {useAuth} from "../services/auth";
 import {useRef, useState} from "react";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import sendReq from "../services/sendReq";
-import cloneDeep from 'lodash/cloneDeep';
 import toast from "react-hot-toast";
 
-function User({modalData, setModalData}) {
+function User({setModalData}) {
     const auth = useAuth()
     const [apiKeyViewable, setApiKeyViewable] = useState(false)
     const [apiKeyCopied, setApiKeyCopied] = useState(false)
@@ -31,18 +30,20 @@ function User({modalData, setModalData}) {
 
     const regenerateKey = () => {
         const onModalButton1Click = () => {
-            let data = cloneDeep(baseData)
-            data.closable = true
-            data.visible = false
-            setModalData(data)
+            setModalData(data => {
+                data.visible = false
+                return {...data}
+            })
             setTimeout(() => {
                 setModalData({})
             }, 500)
         }
 
         const onModalButton2Click = () => {
-            modalData.closable = false
-            setModalData(modalData)
+            setModalData(data => {
+                data.closable = false
+                return {...data}
+            })
 
             document.getElementById('modal-button-1').disabled = true
             document.getElementById('modal-button-2').disabled = true
@@ -51,27 +52,29 @@ function User({modalData, setModalData}) {
                 .then(() => {
                     const button2 = document.getElementById('modal-button-2')
                     button2.innerText = 'Regenerated'
-                    button2.classList.remove('bg-red-300')
-                    button2.classList.add('bg-green-300')
+                    button2.classList.remove('bg-red-400')
+                    button2.classList.add('bg-green-400')
                     auth.reloadData().then()
                     setTimeout(() => {
-                        let data = cloneDeep(baseData)
-                        data.closable = true
-                        data.visible = false
-                        setModalData(data)
+                        setModalData(data => {
+                            data.closable = true
+                            data.visible = false
+                            return {...data}
+                        })
                         setTimeout(() => {
                             setModalData({})
                         }, 500)
                     }, 1500)
                 }).catch(() => {
-                let data = cloneDeep(baseData)
-                data.closable = true
-                data.visible = false
-                setModalData(data)
-                setTimeout(() => {
-                    setModalData({})
-                }, 500)
-            })
+                    setModalData(data => {
+                        data.closable = true
+                        data.visible = false
+                        return {...data}
+                    })
+                    setTimeout(() => {
+                        setModalData({})
+                    }, 500)
+                })
         }
 
         const baseData = {
@@ -84,20 +87,19 @@ function User({modalData, setModalData}) {
                       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
             </svg>,
             buttons: <>
-                <button id="modal-button-1" onClick={onModalButton1Click}
+                <button key={1} id="modal-button-1" onClick={onModalButton1Click}
                         className="px-3 py-2 rounded-lg font-semibold bg-slate-200 disabled:opacity-75">Cancel
                 </button>
-                <button id="modal-button-2" onClick={onModalButton2Click}
-                        className="px-3 py-2 rounded-lg bg-red-300 disabled:opacity-75">Regenerate
+                <button key={2} id="modal-button-2" onClick={onModalButton2Click}
+                        className="px-3 py-2 rounded-lg bg-red-400 disabled:opacity-75">Regenerate
                 </button>
-            </>
+            </>,
+            closable: true,
+            visible: true,
+            updated: Date.now()
         }
 
-        modalData = cloneDeep(baseData)
-        modalData.closable = true
-        modalData.visible = true
-        modalData.updated = Date.now()
-        setModalData(modalData)
+        setModalData(baseData)
     }
 
     const onChange = () => {

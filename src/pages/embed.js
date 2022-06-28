@@ -204,7 +204,7 @@ function Embed() {
                             })}</p>
                         </div>
                         <p className="text-sky-500 hover:underline">{`https://${auth.user.domain}/${auth.user.settings.linkType === 0 ? 'aBcD1234.png' : ''}`}</p>
-                        <div className={`discord-embed-preview ${embedEnabled ? '' : 'hidden'}`}>
+                        <div className={`discord-embed-preview ${embedEnabled ? '' : 'hidden'}`} style={{'borderLeftColor': embedColor}}>
                             <div>
                                 <span className="discord-embed-site-name">{setPlaceholders(siteName)}</span>
                             </div>

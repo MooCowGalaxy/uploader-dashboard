@@ -19,7 +19,7 @@ const titleMapping = {
     '/rules': 'Rules'
 }
 
-function Container({modalData, setModalData}) {
+function Container({setModalData}) {
     const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 640)
     const [title, setTitle] = useState(titleMapping[window.location.pathname.slice(10)])
     const location = useLocation();
@@ -48,17 +48,16 @@ function Container({modalData, setModalData}) {
                         <Routes>
                             <Route path='/dashboard' element={<Home/>}/>
                             <Route path='/dashboard/user'
-                                   element={<User modalData={modalData} setModalData={setModalData}/>}/>
+                                   element={<User setModalData={setModalData}/>}/>
                             <Route path='/dashboard/embed' element={<Embed/>}/>
                             <Route path='/dashboard/gallery' element={<Gallery/>}/>
-                            <Route path='/dashboard/domains' element={<Domains/>}/>
+                            <Route path='/dashboard/domains' element={<Domains setModalData={setModalData} />}/>
                             <Route path='/dashboard/donate' element={<Donate/>}/>
                             <Route path='/dashboard/rules' element={<Rules/>}/>
                             <Route path='/*' element={<Navigate to="/dashboard"/>}/>
                         </Routes>
                     </div>
                 </div>
-
             </div>
         </div>
     )
