@@ -209,9 +209,9 @@ function User({setModalData}) {
                         <label htmlFor="page-user-link-type">Set link type</label>
                         <select id="select" onChange={onChange} value={linkType}
                                 className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                            <option value="0" id="0" className="type">Random alphanumeric</option>
-                            <option value="1" id="1" className="type">Random emojis</option>
-                            <option value="2" id="2" className="type">Zero width characters</option>
+                            <option value="0" id="0" className="type">Normal URL </option>
+                            <option value="1" id="1" className="type">Emoji URL</option>
+                            <option value="2" id="2" className="type">Invisible URL</option>
                         </select>
                         <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0}
                                 className="px-4 py-2 bg-green-300 rounded-md disabled:opacity-75 disabled:bg-gray-300">{linkTypeState === 1 ? <>
