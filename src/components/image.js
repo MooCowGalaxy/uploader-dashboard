@@ -43,7 +43,7 @@ function Image({image, domain, del}) {
         <div className="content">
             <p className="text-center font-bold">{image.fileId}.{image.extension}</p>
             <p className="text-center font-semibold mb-2">Original: {image.originalName}</p>
-            <img src={`/raw/${image.fileId}.${image.extension}`} alt=""
+            <img src={`https://cdn.uploader.tech/${user.user.id}/${image.fileId}.${image.extension}`} alt=""
                  className="mx-auto w-auto max-w-full max-h-40 mb-3 rounded-md object-contain"/>
             <p className="mb-3 text-center">{new Date(parseInt(image.timestamp)).toLocaleString()}<br/>{humanReadableBytes(parseInt(image.size))} -
                 viewed {image.viewCount} time{image.viewCount === 1 ? '' : 's'}</p>
