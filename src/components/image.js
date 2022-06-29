@@ -3,8 +3,10 @@ import {CopyToClipboard} from "react-copy-to-clipboard/lib/Component";
 import toast from "react-hot-toast";
 import {useState} from "react";
 import sendReq from "../services/sendReq";
+import {useAuth} from "../services/auth";
 
 function Image({image, domain, del}) {
+    const { user } = useAuth()
     const [deleteState, setDeleteState] = useState(0)
     const onCopyLink = () => {
         toast.success((
@@ -17,7 +19,7 @@ function Image({image, domain, del}) {
     const onDownload = () => {
         const link = document.createElement("a")
         link.download = `${image.fileId}.${image.extension}`
-        link.href = `/raw/${image.fileId}.${image.extension}`
+        link.href = `https://cdn.uploader.tech/${user.user.id}/${image.fileId}.${image.extension}`
         document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
