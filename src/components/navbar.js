@@ -4,7 +4,40 @@ import OutsideAlerter from "./outsideAlerter";
 
 function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
+    const [darkMode, setDarkMode] = useState(window.localStorage.getItem('dark') !== undefined ? window.localStorage.getItem('dark') === 'true' : undefined)
     const auth = useAuth()
+
+    if (darkMode === undefined) {
+        if (window.matchMedia) {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                window.localStorage.setItem('dark', 'true')
+                setDarkMode(true)
+            } else {
+                window.localStorage.setItem('dark', 'false')
+                setDarkMode(false)
+            }
+        } else {
+            window.localStorage.setItem('dark', 'false')
+            setDarkMode(false)
+        }
+    }
+    if (darkMode !== undefined) {
+        if (darkMode) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }
+
+    const onDarkModeClick = () => {
+        if (darkMode) {
+            window.localStorage.setItem('dark', 'false')
+            setDarkMode(false)
+        } else {
+            window.localStorage.setItem('dark', 'true')
+            setDarkMode(true)
+        }
+    }
 
     const onDropdownClick = () => {
         setDropdownOpen(!dropdownOpen)
@@ -26,7 +59,17 @@ function Navbar() {
                     <div
                         className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <div className="ml-3 relative">
-                            <button className="text-white" id="navbar-dropdown" onClick={onDropdownClick}>
+                            <button id="navbar-dark" className="rounded-full mr-2 align-middle inline-block no-transition" onClick={onDarkModeClick}>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     className="block text-white h-6 w-6" fill="none"
+                                     viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    {darkMode ?
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /> :
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    }
+                                </svg>
+                            </button>
+                            <button className="text-white align-middle inline-block" id="navbar-dropdown" onClick={onDropdownClick}>
                                 {auth.data.username}<span id="discriminator">#{auth.data.discriminator}&nbsp;</span>
                                 <i className={`bi bi-chevron-${dropdownOpen ? 'up' : 'down'}`}
                                    id="navbar-dropdown-icon"/>

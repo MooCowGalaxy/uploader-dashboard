@@ -57,7 +57,7 @@ function Gallery() {
                 <div className="mb-3 xl:w-96">
                     <label htmlFor="sort">Sort by:</label>
                     <select id="sort" onChange={onSort} value={sort}
-                            className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding bg-no-repeat border border-solid border-gray-300 dark:border-gray-700 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                         <option value="0">Date (new to old)</option>
                         <option value="1">Date (old to new)</option>
                         <option value="2">File name (A-Z)</option>

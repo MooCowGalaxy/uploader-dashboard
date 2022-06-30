@@ -130,37 +130,37 @@ function Home() {
                 <div className="content">
                     <h1>Your Stats</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        <div className="rounded-md bg-lime-200 bg-opacity-50 py-2 px-3 border-l-4 border-l-lime-400"
+                        <div className="rounded-md bg-lime-200 bg-opacity-50 py-2 px-3 border-l-4 border-l-lime-400 dark:bg-lime-800 dark:text-slate-200"
                              id="page-home-self-images">
-                            <p><b className="font-semibold text-lime-600">{auth.user.uploadCount}</b> images uploaded
+                            <p><b className="font-semibold text-lime-600 dark:text-lime-400">{auth.user.uploadCount}</b> images uploaded
                             </p>
                         </div>
-                        <div className="rounded-md bg-cyan-100 bg-opacity-50 py-2 px-3 border-l-4 border-l-cyan-300"
+                        <div className="rounded-md bg-cyan-100 bg-opacity-50 py-2 px-3 border-l-4 border-l-cyan-300 dark:bg-cyan-800 dark:text-slate-200"
                              id="page-home-self-storage">
-                            <p><b className="font-semibold text-cyan-600">{auth.user.bytesHuman}</b> storage used</p>
+                            <p><b className="font-semibold text-cyan-600 dark:text-cyan-400">{auth.user.bytesHuman}</b> storage used</p>
                         </div>
                     </div>
                 </div>
                 <div className="content">
                     <h1>Global Stats</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
-                        <div className="rounded-md bg-lime-200 bg-opacity-50 py-2 px-3 border-l-4 border-l-lime-400"
+                        <div className="rounded-md bg-lime-200 bg-opacity-50 py-2 px-3 border-l-4 border-l-lime-400 dark:bg-lime-800 dark:text-slate-200"
                              id="page-home-global-images">
                             {globalStats !== {} ?
-                                <p><b className="font-semibold text-lime-600">{globalStats.fileCount}</b> images
+                                <p className="dark:text-slate-200"><b className="font-semibold text-lime-600 dark:text-lime-400">{globalStats.fileCount}</b> images
                                     uploaded</p> : <p className="text-loading"/>}
                         </div>
-                        <div className="rounded-md bg-cyan-100 bg-opacity-50 py-2 px-3 border-l-4 border-l-cyan-300"
+                        <div className="rounded-md bg-cyan-100 bg-opacity-50 py-2 px-3 border-l-4 border-l-cyan-300 dark:bg-cyan-800 dark:text-slate-200"
                              id="page-home-global-storage">
                             {globalStats !== {} ?
-                                <p><b className="font-semibold text-cyan-600">{globalStats.dataUsed}</b> storage used
+                                <p className="dark:text-slate-200"><b className="font-semibold text-cyan-600 dark:text-cyan-400">{globalStats.dataUsed}</b> storage used
                                 </p> : <p className="text-loading"/>}
                         </div>
                         <div
-                            className="rounded-md bg-blue-100 md:col-span-2 xl:col-span-1 bg-opacity-50 py-2 px-3 border-l-4 border-l-blue-400"
+                            className="rounded-md bg-blue-100 md:col-span-2 xl:col-span-1 bg-opacity-50 py-2 px-3 border-l-4 border-l-blue-400 dark:bg-blue-900 dark:text-slate-200"
                             id="page-home-global-users">
                             {globalStats !== {} ?
-                                <p><b className="font-semibold text-blue-600">{globalStats.userCount}</b> users
+                                <p className="dark:text-slate-200"><b className="font-semibold text-blue-600 dark:text-blue-400">{globalStats.userCount}</b> users
                                     registered</p> : <p className="text-loading"/>}
                         </div>
                     </div>
@@ -169,7 +169,7 @@ function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="content">
                     <h1 className="mb-2">Quickstart Guide</h1>
-                    <p className="mb-2">Note: This guide is meant for users on Windows using ShareX.</p>
+                    <p className="mb-2 dark:text-slate-200">Note: This guide is meant for users on Windows using ShareX.</p>
                     <div className="grid grid-cols-1 gap-3" id="page-home-quickstart">
                         <div className="list-item">
                             <p>1.</p>

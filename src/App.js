@@ -49,18 +49,18 @@ function App() {
                 <div className="modal-container px-3">
                     <OutsideAlerter onOutsideClick={onOutsideClick} className="mx-auto w-fit">
                         <div className="container max-w-2xl shadow-lg">
-                            <div className="bg-white px-5 pt-4 pb-3 rounded-tl-lg rounded-tr-lg d-flex-row">
+                            <div className="bg-white dark:bg-slate-900 px-5 pt-4 pb-3 rounded-tl-lg rounded-tr-lg d-flex-row">
                                 <div className="mr-3 flex-initial">
                                     <div className={`h-12 w-12 p-2 rounded-full ${modalData.iconColor}`}>
                                         {modalData.iconSVG}
                                     </div>
                                 </div>
                                 <div className="flex-1">
-                                    <h1 className="font-semibold text-lg text-black">{modalData.title}</h1>
-                                    <p className="text-base text-gray-600">{modalData.description}</p>
+                                    <h1 className="font-semibold text-lg text-black dark:text-white">{modalData.title}</h1>
+                                    <p className="text-base text-gray-600 dark:text-gray-400">{modalData.description}</p>
                                 </div>
                             </div>
-                            <div className="bg-neutral-200 px-5 py-3 rounded-bl-lg rounded-br-lg flex justify-between">
+                            <div className="bg-neutral-200 dark:bg-slate-800 px-5 py-3 rounded-bl-lg rounded-br-lg flex justify-between">
                                 <div/>
                                 <div className="d-flex-row grid gap-3">
                                     {modalData.buttons}

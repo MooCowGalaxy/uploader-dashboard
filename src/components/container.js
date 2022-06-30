@@ -31,7 +31,7 @@ function Container({setModalData}) {
     return (
         <div className="w-full text-black flex-1-1 d-flex-row relative">
             <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
-            <div id="container" className="p-5 bg-white">
+            <div id="container" className="p-5">
                 <div className="relative flex-initial">
                     <button onClick={() => setSidebarOpen(!sidebarOpen)}
                             className="absolute rounded-md p-2 border border-slate-700 inline-block hover-cursor"
@@ -42,7 +42,7 @@ function Container({setModalData}) {
                         </svg>
                     </button>
                     <div className="flex justify-center">
-                        <h1 className="text-3xl font-semibold mb-5" id="page-title">{title}</h1>
+                        <h1 className="text-3xl font-semibold mb-5 text-black dark:text-slate-200" id="page-title">{title}</h1>
                     </div>
                     <div id="content-container" className="flex-1 relative">
                         <Routes>

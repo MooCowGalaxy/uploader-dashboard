@@ -103,18 +103,18 @@ function Embed() {
                 <div className="flex justify-start mb-2">
                     <div className="form-check form-switch">
                         <input
-                            className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
+                            className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white dark:bg-slate-700 bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
                             type="checkbox" role="switch" defaultChecked={embedEnabled} id="page-embed-embed-toggle"
                             onChange={e=> setEmbedEnabled(e.target.checked)}/>
-                        <label className="form-check-label inline-block text-gray-800"
+                        <label className="form-check-label inline-block text-gray-800 dark:text-gray-300"
                                htmlFor="page-embed-embed-toggle">Enable embeds</label>
                     </div>
                 </div>
                 <div className="accordion mb-4" id="placeholder-accordion">
-                    <div className="accordion-item bg-white border border-gray-200">
+                    <div className="accordion-item bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-600">
                         <h2 className="accordion-header mb-0" id="placeholder-accordion-heading">
                             <button
-                                className="accordion-button relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none"
+                                className="accordion-button relative flex items-center w-full py-4 px-5 text-base text-gray-800 dark:text-gray-200 text-left bg-white dark:bg-slate-900 border-0 rounded-none transition focus:outline-none"
                                 type="button" data-bs-toggle="collapse" data-bs-target="#placeholder-accordion-content"
                                 aria-expanded="true" aria-controls="placeholder-accordion-content">
                                 Placeholders
@@ -137,10 +137,10 @@ function Embed() {
                     <div className="flex justify-start">
                         <div className="mb-3 w-full">
                             <label htmlFor="page-embed-input-site-name"
-                                   className="form-label inline-block mb-1 text-gray-700 font-semibold">Site
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
                                 Name</label>
                             <input type="text"
-                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                    value={siteName}
                                    onInput={e => setSiteName(e.target.value)} placeholder="Site name"/>
                         </div>
@@ -148,10 +148,10 @@ function Embed() {
                     <div className="flex justify-start">
                         <div className="mb-3 w-full">
                             <label htmlFor="page-embed-input-title"
-                                   className="form-label inline-block mb-1 text-gray-700 font-semibold">Site
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
                                 Title</label>
                             <input type="text"
-                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                    value={siteTitle}
                                    onInput={e => setSiteTitle(e.target.value)} placeholder="Site title"/>
                         </div>
@@ -159,10 +159,10 @@ function Embed() {
                     <div className="flex justify-start">
                         <div className="mb-3 w-full">
                             <label htmlFor="page-embed-input-description"
-                                   className="form-label inline-block mb-1 text-gray-700 font-semibold">Site
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
                                 Description</label>
                             <input type="text"
-                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                    value={siteDescription}
                                    onInput={e => setSiteDescription(e.target.value)} placeholder="Site description"/>
                         </div>
@@ -170,17 +170,17 @@ function Embed() {
                     <div className="flex justify-start">
                         <div className="mb-5 w-full">
                             <label htmlFor="page-embed-input-color"
-                                   className="form-label inline-block mb-1 text-gray-700 font-semibold">Embed
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Embed
                                 Color</label>
                             <input type="color"
-                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                    value={embedColor}
                                    onInput={e => setEmbedColor(e.target.value)} placeholder="Embed color"/>
                         </div>
                     </div>
                     <div className="flex justify-end">
                         <button id="page-embed-save"
-                                className="px-4 py-2 bg-green-400 rounded-md disabled:opacity-75 disabled:bg-gray-300"
+                                className="px-4 py-2 bg-green-400 rounded-md disabled:opacity-75 disabled:bg-gray-300 disabled:dark:text-inherit dark:text-gray-700 disabled:dark:bg-gray-700"
                                 disabled={!embedHasChanges() && buttonStatus === 0}
                                 onClick={onSaveClick}>Save Changes
                         </button>

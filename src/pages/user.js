@@ -80,7 +80,7 @@ function User({setModalData}) {
         const baseData = {
             title: 'Are you sure?',
             description: 'If you regenerate your API key, you will need to re-download your configs. Only proceed if you know what you are doing.',
-            iconColor: 'bg-red-100',
+            iconColor: 'bg-red-100 dark:bg-red-900/50',
             iconSVG: <svg key="modalSVG" xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-600" fill="none"
                           viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -88,10 +88,10 @@ function User({setModalData}) {
             </svg>,
             buttons: <>
                 <button key={1} id="modal-button-1" onClick={onModalButton1Click}
-                        className="px-3 py-2 rounded-lg font-semibold bg-slate-200 disabled:opacity-75">Cancel
+                        className="px-3 py-2 rounded-lg font-semibold dark:text-white disabled:opacity-75">Cancel
                 </button>
                 <button key={2} id="modal-button-2" onClick={onModalButton2Click}
-                        className="px-3 py-2 rounded-lg bg-red-400 disabled:opacity-75">Regenerate
+                        className="px-3 py-2 rounded-lg bg-red-500 text-white disabled:opacity-75">Regenerate
                 </button>
             </>,
             closable: true,
@@ -149,12 +149,12 @@ function User({setModalData}) {
                                      alt=""/>
                             </div>
                             <div className="flex-1-1 my-auto">
-                                <p className="text-xl text-gray-500"><b className="text-black">{auth.data.username}</b>#{auth.data.discriminator}</p>
+                                <p className="text-xl text-gray-500"><b className="text-black dark:text-white">{auth.data.username}</b>#{auth.data.discriminator}</p>
                             </div>
                         </div>
                         <div className="mb-3">
                             <p className="text-lg">Storage: <b className="font-semibold">{auth.user.bytesHuman}</b> / <b className="font-semibold">{auth.user.storageQuota} GB</b> (<b className={`font-semibold ${color}`}>{roundedPercentage}%</b>)</p>
-                            <div className="w-full bg-gray-300 h-0.5">
+                            <div className="w-full bg-gray-300 dark:bg-gray-600 h-0.5">
                                 <div className="bg-blue-600 h-0.5" style={{width: `${roundedPercentage}%`}} />
                             </div>
                         </div>
@@ -169,7 +169,7 @@ function User({setModalData}) {
                 <div>
                     <div className="content">
                         <h1 className="mb-2">API Key</h1>
-                        <div className="rounded border border-gray-300 px-4 py-2.5 mb-2 relative">
+                        <div className="rounded border border-gray-300 dark:border-gray-600 px-4 py-2.5 mb-2 relative">
                             <p ref={apiKey}>{apiKeyViewable ? auth.user.apiKey : '*********************'}</p>
                             <div className="absolute right-4 top-2.5">
                                 <CopyToClipboard text={auth.user.apiKey} onCopy={onApiKeyCopy}>
@@ -194,7 +194,7 @@ function User({setModalData}) {
                         </div>
                         <div className="mb-10">
                             <button onClick={regenerateKey}
-                                    className="inline-block px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md float-right">
+                                    className="inline-block px-3 py-1 text-white bg-red-400 hover:bg-red-500 rounded-md float-right">
                                 Regenerate
                             </button>
                         </div>
@@ -208,13 +208,13 @@ function User({setModalData}) {
                         <h1 className="mb-2">Link Type</h1>
                         <label htmlFor="page-user-link-type">Set link type</label>
                         <select id="select" onChange={onChange} value={linkType}
-                                className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                                className="form-select appearance-none block w-max pr-10 px-3 py-1.5 mb-3 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding bg-no-repeat border border-solid border-gray-300 dark:border-gray-700 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                             <option value="0" id="0" className="type">Random alphanumeric</option>
                             <option value="1" id="1" className="type">Random emojis</option>
                             <option value="2" id="2" className="type">Zero width characters</option>
                         </select>
                         <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0}
-                                className="px-4 py-2 bg-green-300 rounded-md disabled:opacity-75 disabled:bg-gray-300">{linkTypeState === 1 ? <>
+                                className="px-4 py-2 bg-green-300 dark:text-black font-semibold rounded-md disabled:opacity-75 disabled:bg-gray-300 disabled:dark:bg-gray-600">{linkTypeState === 1 ? <>
                             <div
                                 className="spinner-border animate-spin inline-block w-4 h-4 border rounded-full text-gray-800"
                                 role="status">

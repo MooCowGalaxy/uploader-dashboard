@@ -266,7 +266,7 @@ function Domains({setModalData}) {
         for (let domain of domainList) {
             let status = ['INACTIVE', 'PENDING_NS', 'ACTIVE'].indexOf(domain.status)
             ownedDomains.push((
-                <div key={domain.id} className="mb-2 rounded-md bg-white px-4 py-2 flex justify-between">
+                <div key={domain.id} className="mb-2 rounded-md bg-white dark:bg-slate-900 px-4 py-2 flex justify-between">
                     <div>
                         <h1 className="font-semibold">{domain.domain}</h1>
                         <p>Status: <b className={['text-gray-600', 'text-yellow-600', 'text-green-600'][status]}>{domain.status !== 'PENDING_NS' ? (domain.status[0] + domain.status.slice(1).toLowerCase()) : 'Pending Nameservers'}</b></p>
@@ -308,17 +308,17 @@ function Domains({setModalData}) {
     if (publicDomainList !== null) {
         for (let domain of publicDomainList) {
             publicDomains.push((
-                <tr className="bg-gray-100 border-b" key={`domain-row-${domain.id}`}>
-                    <td className="px-4 py-2 whitespace-nowrap text-md font-semibold text-gray-900">{domain.id}</td>
-                    <td className="text-md text-gray-900 font-normal px-4 py-2 whitespace-nowrap">
+                <tr className="bg-gray-100 dark:bg-inherit border-b dark:border-gray-600/75" key={`domain-row-${domain.id}`}>
+                    <td className="px-4 py-2 whitespace-nowrap text-md font-semibold text-gray-900 dark:text-gray-200">{domain.id}</td>
+                    <td className="text-md text-gray-900 dark:text-gray-200 font-normal px-4 py-2 whitespace-nowrap">
                         {domain.domain}
                     </td>
-                    <td className="text-md text-gray-900 font-normal px-4 py-2 whitespace-nowrap">
+                    <td className="text-md text-gray-900 dark:text-gray-200 font-normal px-4 py-2 whitespace-nowrap">
                         {domain.ownerId}
                     </td>
-                    <td className="text-md text-gray-900 font-normal px-4 py-2 whitespace-nowrap">
+                    <td className="text-md text-gray-900 font-semibold px-4 py-2 whitespace-nowrap">
                         <button
-                            className="bg-green-300 px-4 py-1 rounded-md disabled:opacity-75 disabled:bg-gray-300 no-transition"
+                            className="bg-green-400 text-white dark:text-black px-4 py-1 rounded-md disabled:opacity-75 disabled:bg-gray-300 disabled:text-gray-500 no-transition"
                             disabled={domain.domain === newUserDomain} onClick={() => setNewDomain(domain.id)}>Use Domain
                         </button>
                     </td>
@@ -394,17 +394,17 @@ function Domains({setModalData}) {
                     </button>
                 </div>
                 <div className="content">
-                    <h1>Your Domain Settings</h1>
+                    <h1 className="mb-2">Your Domain Settings</h1>
                     <div className="flex justify-start mb-2">
                         <div className="max-w-3xl">
                             <input type="text"
-                                   className="form-control inline-block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-l transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   className="form-control inline-block px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded-l transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                    placeholder="Subdomain" value={newSubdomain} onChange={onDomainInput} maxLength="20"/>
                             <span
-                                className="inline-block px-3 py-1.5 -translate-x-0.5 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border border-solid border-gray-300 rounded-r">.{newUserDomain}</span>
+                                className="inline-block px-3 py-1.5 -translate-x-0.5 text-base font-normal text-gray-700 dark:text-gray-200 bg-gray-200 dark:bg-gray-700 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded-r">.{newUserDomain}</span>
                         </div>
                     </div>
-                    <button className="bg-green-300 px-4 py-2 rounded-md mb-3 disabled:opacity-75 disabled:bg-gray-300"
+                    <button className="bg-green-400 px-4 py-2 mb-3 text-white font-semibold dark:text-black rounded-md disabled:opacity-75 disabled:bg-gray-300 disabled:text-gray-500"
                             disabled={!isValid() || isSaving} onClick={saveDomain}>Save
                     </button>
                     <p>Leave the subdomain blank to use no subdomain.</p>
@@ -418,22 +418,22 @@ function Domains({setModalData}) {
                         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                             <div className="overflow-hidden">
                                 <table className="min-w-full">
-                                    <thead className="bg-white border-b">
+                                    <thead className="bg-white dark:bg-gray-800 border-b">
                                         <tr>
                                             <th scope="col"
-                                                className="text-sm font-medium text-gray-900 px-4 py-2 text-left">
+                                                className="text-sm font-medium text-gray-900 dark:text-gray-200 px-4 py-2 text-left">
                                                 ID
                                             </th>
                                             <th scope="col"
-                                                className="text-sm font-medium text-gray-900 px-4 py-2 text-left">
+                                                className="text-sm font-medium text-gray-900 dark:text-gray-200 px-4 py-2 text-left">
                                                 Domain
                                             </th>
                                             <th scope="col"
-                                                className="text-sm font-medium text-gray-900 px-4 py-2 text-left">
+                                                className="text-sm font-medium text-gray-900 dark:text-gray-200 px-4 py-2 text-left">
                                                 Owner ID
                                             </th>
                                             <th scope="col"
-                                                className="text-sm font-medium text-gray-900 px-4 py-2 text-left">
+                                                className="text-sm font-medium text-gray-900 dark:text-gray-200 px-4 py-2 text-left">
                                                 Actions
                                             </th>
                                         </tr>
