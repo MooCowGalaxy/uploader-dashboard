@@ -56,8 +56,6 @@ function Domains({setModalData}) {
                 filtered = `${filtered}${character}`
             }
         }
-        while (filtered.startsWith('-')) filtered = filtered.slice(1)
-        while (filtered.endsWith('-')) filtered = filtered.slice(0, -1)
         setNewSubdomain(filtered.split('').join(''))
     }
 
