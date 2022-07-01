@@ -9,6 +9,9 @@ function Embed() {
     const [dataLoaded, setDataLoaded] = useState(false)
     const [original, setOriginal] = useState({})
     const [siteName, setSiteName] = useState(null)
+    const [siteNameLink, setSiteNameLink] = useState(null)
+    const [siteAuthor, setSiteAuthor] = useState(null)
+    const [siteAuthorLink, setSiteAuthorLink] = useState(null)
     const [siteTitle, setSiteTitle] = useState(null)
     const [siteDescription, setSiteDescription] = useState(null)
     const [embedColor, setEmbedColor] = useState(null)
@@ -21,6 +24,9 @@ function Embed() {
             .then(res => {
                 const data = res.data.data
                 setSiteName(data.embedSiteName)
+                setSiteNameLink(data.embedSiteNameLink)
+                setSiteAuthor(data.embedSiteAuthor)
+                setSiteAuthorLink(data.embedSiteAuthorLink)
                 setSiteTitle(data.embedSiteTitle)
                 setSiteDescription(data.embedSiteDescription)
                 setEmbedColor(data.embedColor)
@@ -70,6 +76,9 @@ function Embed() {
         setButtonStatus(1)
         const data = {
             name: siteName,
+            nameLink: siteNameLink,
+            author: siteAuthor,
+            authorLink: siteAuthorLink,
             title: siteTitle,
             description: siteDescription,
             color: embedColor,
@@ -147,6 +156,39 @@ function Embed() {
                     </div>
                     <div className="flex justify-start">
                         <div className="mb-3 w-full">
+                            <label htmlFor="page-embed-input-site-name"
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
+                                Name URL</label>
+                            <input type="text"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   value={siteNameLink}
+                                   onInput={e => setSiteNameLink(e.target.value)} placeholder="Site name URL"/>
+                        </div>
+                    </div>
+                    <div className="flex justify-start">
+                        <div className="mb-3 w-full">
+                            <label htmlFor="page-embed-input-site-name"
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
+                                Author</label>
+                            <input type="text"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   value={siteAuthor}
+                                   onInput={e => setSiteAuthor(e.target.value)} placeholder="Site author"/>
+                        </div>
+                    </div>
+                    <div className="flex justify-start">
+                        <div className="mb-3 w-full">
+                            <label htmlFor="page-embed-input-site-name"
+                                   className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
+                                Author URL</label>
+                            <input type="text"
+                                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-gray-400 bg-white dark:bg-slate-900 bg-clip-padding border border-solid border-gray-300 dark:border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                   value={siteAuthorLink}
+                                   onInput={e => setSiteAuthorLink(e.target.value)} placeholder="Site author URL"/>
+                        </div>
+                    </div>
+                    <div className="flex justify-start">
+                        <div className="mb-3 w-full">
                             <label htmlFor="page-embed-input-title"
                                    className="form-label inline-block mb-1 text-gray-700 dark:text-gray-300 font-semibold">Site
                                 Title</label>
@@ -206,7 +248,10 @@ function Embed() {
                         <p className="text-sky-500 hover:underline">{`https://${auth.user.domain}/${auth.user.settings.linkType === 0 ? 'aBcD1234.png' : ''}`}</p>
                         <div className={`discord-embed-preview ${embedEnabled ? '' : 'hidden'}`} style={{'borderLeftColor': embedColor}}>
                             <div>
-                                <span className="discord-embed-site-name">{setPlaceholders(siteName)}</span>
+                                <a href={siteNameLink}><span className="discord-embed-site-name">{setPlaceholders(siteName)}</span></a>
+                            </div>
+                            <div>
+                                <a href={siteAuthorLink}><span className="discord-embed-site-author">{setPlaceholders(siteAuthor)}</span></a>
                             </div>
                             <div>
                                 <span className="discord-embed-site-title">{setPlaceholders(siteTitle)}</span>

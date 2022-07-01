@@ -533,6 +533,18 @@ html:not(.dark) .bg-blue-sidebar {
   font-weight: 400;
   color: #dcddde;
 }
+.discord-embed-site-name:hover {
+  text-decoration: underline;
+}
+.discord-embed-site-author {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+  color: white;
+}
+.discord-embed-site-author:hover {
+  text-decoration: underline;
+}
 .discord-embed-site-title {
   font-size: 1rem;
   font-weight: 600;
