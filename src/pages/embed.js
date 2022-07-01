@@ -46,9 +46,12 @@ function Embed() {
     }
 
     function getError() {
+        if (siteAuthor.length > 255) return 'Site author must be 255 characters or less.'
+        if (siteAuthorLink.length > 100) return 'Site author URL must be 100 characters or less.'
         if (siteName.length > 255) return 'Site name must be 255 characters or less.'
+        if (siteNameLink.length > 100) return 'Site name URL must be 100 characters or less.'
         if (siteTitle.length > 255) return 'Embed title must be 255 characters or less.'
-        if (siteDescription.length > 500) return 'Embed description must be 500 characters or less.'
+        if (siteDescription.length > 255) return 'Embed description must be 500 characters or less.'
         if (embedEnabled && siteTitle === '') return 'There must be a title for the embed to display.'
         return null
     }

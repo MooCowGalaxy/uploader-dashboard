@@ -49,13 +49,15 @@ function Domains({setModalData}) {
 
     const onDomainInput = (e) => {
         let newSubdomain = e.target.value
-        let allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('')
+        let allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-'.split('')
         let filtered = ''
         for (let character of newSubdomain) {
             if (allowed.includes(character)) {
                 filtered = `${filtered}${character}`
             }
         }
+        while (filtered.startsWith('-')) filtered = filtered.slice(1)
+        while (filtered.endsWith('-')) filtered = filtered.slice(0, -1)
         setNewSubdomain(filtered.split('').join(''))
     }
 
