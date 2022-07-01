@@ -67,7 +67,10 @@ function Embed() {
 
     function embedHasChanges() {
         if (original.embedEnabled !== embedEnabled) return true
+        if (original.embedSiteAuthor !== siteAuthor) return true
+        if (original.embedSiteAuthorLink !== siteAuthorLink) return true
         if (original.embedSiteName !== siteName) return true
+        if (original.embedSiteNameLink !== siteNameLink) return true
         if (original.embedSiteTitle !== siteTitle) return true
         if (original.embedSiteDescription !== siteDescription) return true
         return original.embedColor !== embedColor;
