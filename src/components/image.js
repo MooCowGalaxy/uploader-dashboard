@@ -5,9 +5,12 @@ import {useState} from "react";
 import sendReq from "../services/sendReq";
 import {useAuth} from "../services/auth";
 
-function Image({image, domain, del}) {
+function Image({image, del}) {
     const { user } = useAuth()
     const [deleteState, setDeleteState] = useState(0)
+
+    const domain = image.domain
+
     const onCopyLink = () => {
         toast.success((
             <p>

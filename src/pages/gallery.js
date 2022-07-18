@@ -1,10 +1,8 @@
 import {useEffect, useState} from "react";
 import sendReq from "../services/sendReq";
 import Image from "../components/image";
-import {useAuth} from "../services/auth";
 
 function Gallery() {
-    const auth = useAuth()
     const [images, setImages] = useState([])
     const [loading, setLoading] = useState(false)
     const [sort, setSort] = useState(0)
@@ -47,7 +45,7 @@ function Gallery() {
     const imageContent = []
     for (let image of images) {
         imageContent.push((
-            <Image key={`i-${image.fileId}`} image={image} domain={auth.user.domain} del={deleteImage}/>
+            <Image key={`i-${image.fileId}`} image={image} del={deleteImage}/>
         ))
     }
 
