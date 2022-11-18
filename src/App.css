@@ -16,6 +16,9 @@
 html:not(.dark) #container {
   background-color: var(--light-background-3);
 }
+.dark-background {
+  background-color: var(--dark-background);
+}
 .dark #container {
   background-color: var(--dark-background);
 }

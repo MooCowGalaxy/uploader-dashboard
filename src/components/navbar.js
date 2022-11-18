@@ -24,8 +24,10 @@ function Navbar() {
     if (darkMode !== undefined) {
         if (darkMode) {
             document.documentElement.classList.add('dark')
+            document.documentElement.classList.add('dark-background')
         } else {
             document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove('dark-background')
         }
     }
 
