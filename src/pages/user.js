@@ -212,6 +212,7 @@ function User({setModalData}) {
                             <option value="0" id="0" className="type">Random alphanumeric</option>
                             <option value="1" id="1" className="type">Random emojis</option>
                             <option value="2" id="2" className="type">Zero width characters</option>
+                            <option value="3" id="3" className="type">Direct CDN link</option>
                         </select>
                         <button onClick={saveLinkType} disabled={(!linkTypeChanged) || linkTypeState !== 0}
                                 className="px-4 py-2 bg-green-300 dark:text-black font-semibold rounded-md disabled:opacity-75 disabled:bg-gray-300 disabled:dark:bg-gray-600">{linkTypeState === 1 ? <>
