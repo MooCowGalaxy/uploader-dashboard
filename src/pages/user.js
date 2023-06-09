@@ -149,7 +149,7 @@ function User({setModalData}) {
                                      alt=""/>
                             </div>
                             <div className="flex-1-1 my-auto">
-                                <p className="text-xl text-gray-500"><b className="text-black dark:text-white">{auth.data.username}</b>#{auth.data.discriminator}</p>
+                                <p className="text-xl text-gray-500"><b className="text-black dark:text-white">{auth.data.username}</b>{auth.data.discriminator === '0' ? '' : `#${auth.data.discriminator}`}</p>
                             </div>
                         </div>
                         <div className="mb-3">

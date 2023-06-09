@@ -245,7 +245,7 @@ function Embed() {
                     </div>
                     <div className="discord-embed-content flex-1 max-w-full">
                         <div className="discord-embed-username select-none">
-                            <h1 className="text-white font-semibold inline mr-1">{auth.data.username}</h1>
+                            <h1 className="text-white font-semibold inline mr-2">{auth.data.username}</h1>
                             <p className="text-gray-400 text-xs inline">Today at {new Date().toLocaleTimeString([], {
                                 hour: '2-digit',
                                 minute: '2-digit'

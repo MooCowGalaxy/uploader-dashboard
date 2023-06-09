@@ -72,7 +72,7 @@ function Navbar() {
                                 </svg>
                             </button>
                             <button className="text-white align-middle inline-block" id="navbar-dropdown" onClick={onDropdownClick}>
-                                {auth.data.username}<span id="discriminator">#{auth.data.discriminator}&nbsp;</span>
+                                {auth.data.username}<span id="discriminator" className={auth.data.discriminator === '0' ? 'hidden' : ''}>#{auth.data.discriminator}</span>&nbsp;
                                 <i className={`bi bi-chevron-${dropdownOpen ? 'up' : 'down'}`}
                                    id="navbar-dropdown-icon"/>
                             </button>
