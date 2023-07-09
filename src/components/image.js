@@ -54,7 +54,7 @@ function Image({image, del}) {
                             Copy Link
                         </button>
                     </CopyToClipboard>
-                    <a href={`https://cdn.uploader.tech/${user.settings.userId}/${image.fileId}.${image.extension}`} target="_blank" rel="noopener noreferrer" download>
+                    <a href={`https://cdn.uploader.tech/${user.settings.userId}/${image.fileId}.${image.extension}?download`} target="_blank" rel="noopener noreferrer">
                         <button className="bg-green-600 rounded-md pl-3 px-4 py-2 text-white mb-1 mx-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 -translate-y-0.5 inline"
                                  fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
