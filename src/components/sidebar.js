@@ -113,7 +113,7 @@ function Sidebar({sidebarOpen, setSidebarOpen}) {
                     </a>
                 </div>
                 <div>
-                    <p>© 2022-2024 uploader.tech</p>
+                    <p className="text-sm">© 2022-2024 uploader.tech</p>
                 </div>
             </div>
             <div id="sidebar-placeholder" className={`hidden sm:inline-block ${sidebarOpen ? '' : 'closed'}`}/>
