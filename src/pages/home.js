@@ -124,7 +124,7 @@ function Home() {
         <div>
             <div className="content">
                 <h1>MotD</h1>
-                <h2>moo moo</h2>
+                <h2><span className="font-bold">PLEASE NOTE:</span> This instance of uploader.tech is currently running on a <span className="underline">fresh</span> database, so your old images and configuration will not show up yet. Join the Discord for more announcements and updates.</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="content">
